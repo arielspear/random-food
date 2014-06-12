@@ -35,13 +35,14 @@
     var address = location.address;
     var distance = location.distance;
     var menuURL = venue.menu ? venue.menu.url : null;
+    var photoURL = null;
     if (venue.photos.groups.length !== 0){
       var photo = venue.photos.groups[0].items[0];
       var photoHeight = photo.height;
       var photoWidth = photo.width;
       var photoPrefix = photo.prefix;
       var photoSuffix = photo.suffix;
-      var photoURL = photoPrefix + photoWidth + 'x' + photoHeight + photoSuffix;
+      photoURL = photoPrefix + photoWidth + 'x' + photoHeight + photoSuffix;
       console.log(photoURL);
     }
     var hours = venue.hours.status;
@@ -50,7 +51,8 @@
       hours: hours,
       address: address,
       distance: distance,
-      menuURL: menuURL
+      menuURL: menuURL,
+      photoURL: photoURL
     };
   };
 
