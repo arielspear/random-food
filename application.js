@@ -10,9 +10,10 @@
       console.log(status);
       console.log('success (promises): ');
       var venuesArray = data.response.groups[0].items;
-      console.log(getVenueInfo(venuesArray));
+      var venueInfo = getVenueInfo(venuesArray);
+      console.log(venueInfo);
       console.log(venuesArray);
-      populateHTML(getVenueInfo(venuesArray));
+      populateHTML(venueInfo);
     }, function(xhr, status, error) {
       console.log('failed (promises): ' + error);
     });
