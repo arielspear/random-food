@@ -28,12 +28,16 @@
   var getVenueInfo = function(venArray) {
     var randomInt = getRandomInt(0, 29);
     var name = venArray[randomInt].venue.name;
-    var hours = venArray[randomInt].venue.hours.status;
     var address = venArray[randomInt].venue.location.address;
     var distance = venArray[randomInt].venue.location.distance;
     var menuUrl = null;
+    var hours = null;
+    console.log(randomInt);
     if (venArray[randomInt].venue.menu){
       menuUrl = venArray[randomInt].venue.menu.url;
+    }
+    if (venArray[randomInt].venue.hours.status){
+      hours = venArray[randomInt].venue.hours.status;
     }
     return {name: name, hours: hours, address: address, distance: distance,
       menuUrl: menuUrl};
@@ -41,9 +45,12 @@
 
 
   var populateHTML = function(venInfo) {
-    $('body').append("<p>" + venInfo.name + "</p><p>" + venInfo.hours + "</p><p>" + venInfo.address + "</p><p>" + venInfo.distance + " meters away.</p>");
+    $('body').append("<p>" + venInfo.name + "</p><p>" + venInfo.address + "</p><p>" + venInfo.distance + " meters away.</p>");
     if (venInfo.menuUrl !== null){
       $('body').append("<p><a href=" + venInfo.menuUrl + ">Menu</a></p>");
+    }
+    if (venInfo.hours !== null){
+      $('body').append("<p>" +venInfo.hours+ "</p>");
     }
   };
 
