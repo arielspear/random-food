@@ -26,7 +26,10 @@
     var hours = venArray[randomInt].venue.hours.status;
     var address = venArray[randomInt].venue.location.address;
     var distance = venArray[randomInt].venue.location.distance;
-    var menuUrl = venArray[randomInt].venue.menu.url;
+    var menuUrl = null;
+    if (venArray[randomInt].venue.menu){
+      menuUrl = venArray[randomInt].venue.menu.url;
+    }
     return {name: name, hours: hours, address: address, distance: distance,
       menuUrl: menuUrl};
   };
