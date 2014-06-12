@@ -7,11 +7,13 @@
       'll': '45.533,-122.69',
       'oauth_token': 'TAM5U5CGI2BMMZYSGGBCM44MMQWP5TGQ3OJ0A4MIVKLNVTMB',
       'v': '20140612',
-      'section': 'food'
+      'section': 'food',
+      'venuePhotos': 1
     };
     $.ajax(fourSquareUrl, { dataType: 'jsonp', data: fourSquareOptions })
     .then(function(data, status, xhr) {
       var venuesArray = data.response.groups[0].items;
+      console.log(venuesArray);
       var venueInfo = getRandomVenue(venuesArray);
       populateHTML(venueInfo);
       console.log(venueInfo);
@@ -26,13 +28,22 @@
 
   var getRandomVenue = function(venuesArray) {
     var randomInt = getRandomInt(0, venuesArray.length-1);
-      console.log(randomInt);
+    console.log(randomInt);
     var venue = venuesArray[randomInt].venue;
     var name = venue.name;
     var location = venue.location;
     var address = location.address;
     var distance = location.distance;
     var menuURL = venue.menu ? venue.menu.url : null;
+    if (venue.photos.groups.length !== 0){
+      var photo = venue.photos.groups[0].items[0];
+      var photoHeight = photo.height;
+      var photoWidth = photo.width;
+      var photoPrefix = photo.prefix;
+      var photoSuffix = photo.suffix;
+      var photoURL = photoPrefix + photoWidth + 'x' + photoHeight + photoSuffix;
+      console.log(photoURL);
+    }
     var hours = venue.hours.status;
     return {
       name: name,
