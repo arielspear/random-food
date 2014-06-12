@@ -14,6 +14,7 @@
       var venuesArray = data.response.groups[0].items;
       var venueInfo = getRandomVenue(venuesArray);
       populateHTML(venueInfo);
+      console.log(venueInfo);
     }, function(xhr, status, error) {
       console.log('failed (promises): ' + error);
     });
@@ -24,7 +25,8 @@
   };
 
   var getRandomVenue = function(venuesArray) {
-    var randomInt = getRandomInt(0, venuesArray.length);
+    var randomInt = getRandomInt(0, venuesArray.length-1);
+      console.log(randomInt);
     var venue = venuesArray[randomInt].venue;
     var name = venue.name;
     var location = venue.location;
