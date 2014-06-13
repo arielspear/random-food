@@ -1,20 +1,18 @@
 {
-  "name": "ajax-app",
-  "version": "0.0.1",
-  "homepage": "https://github.com/arielspear/ajax-app",
-  "authors": [
-    "Ariel Spear and Josh Tucker"
-  ],
-  "main": "index.html",
+  "name": "jsi-gulp-app",
+  "version": "0.0.0",
   "license": "MIT",
+  "private": true,
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
+    "app/bower_components",
     "test",
     "tests"
   ],
   "dependencies": {
-    "jquery": "~2.1.1"
+    "jquery": "~2.1.1",
+    "bootstrap-sass": "~3.0.2"
   }
 }
